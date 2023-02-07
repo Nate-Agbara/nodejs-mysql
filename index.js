@@ -1,6 +1,7 @@
 import express from "express";
 import mysql from "mysql2/promise";
 import bodyParser from 'body-parser';
+import { errorHandler } from "./errorHandler";
 
 require('dotenv').config();
 const knex = require('./db/knex');
@@ -92,9 +93,14 @@ app.delete('/users/:id', (req, res) => {
     });
 });
 
+app.get('/error', (req, res) => {
+    throw new Error('this is a custom error') 
+});
 
 app.get('/', (req, res) => 
     res.send(`Node and express server is running on port ${PORT}`) );
+
+app.use(errorHandler)
 
 app.listen(PORT, () => 
     console.log(`Your server is running on port ${PORT}`) );
