@@ -4,11 +4,11 @@ import bodyParser from 'body-parser';
 import { errorHandler } from "./errorHandler";
 
 require('dotenv').config();
-const knex = require('./db/knex');
+const knex = require('./mysql/db/knex');
 const expressWinston = require('express-winston');
 const {transports, format} = require('winston');
 
-const logger = require('./logger');
+const logger = require('./logger').default;
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 const options = require('./swagger');

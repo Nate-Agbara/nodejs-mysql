@@ -5,7 +5,7 @@ volumes:
 
 services:
   mysql:
-    container_name: mysql-node
+    container_name: mysql
     build:
       context: ./mysql
       dockerfile: Dockerfile
@@ -13,12 +13,11 @@ services:
       - "3306:3306"
     volumes:
       - my_sql_datadir:/var/lib/mysql
-      - ./db:/docker-entrypoint-initdb.d/
+      - ./mysql/db/init:/docker-entrypoint-initdb.d/
     env_file:
       - ./.env
     environment:
-      - DB_USER
-      - DB_PASSWORD
+      - MYSQL_ROOT_PASSWORD=dbpass
     command:
       [
         "mysqld",
@@ -26,18 +25,19 @@ services:
         "--collation-server=utf8mb4_unicode_520_ci",
         "--default-authentication-plugin=mysql_native_password",
       ]
-  wallet: 
+  wallet-app: 
     build: 
       context: .
+      dockerfile: Dockerfile
     volumes:
       - ./src:/src
     ports:
       - '3000:3000'
-    depends_on:
-      - 'mysql'
-    environment:
-      - NODE_ENV
-      - DB_USER
-      - DB_PASSWORD
-      - DB_PORT
-      - DB_HOST
+    # depends_on:
+    #   - 'mysql'
+    # environment:
+    #   - NODE_ENV
+    #   - DB_USER
+    #   - DB_PASSWORD
+    #   - DB_PORT
+    #   - DB_HOST

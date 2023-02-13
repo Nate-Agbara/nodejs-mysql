@@ -1,4 +1,4 @@
-const logger = require("./logger");
+import logger from "./logger";
 
 async function errorHandler(err, req, res, next){
     logger.error(err.stack);
@@ -12,4 +12,4 @@ async function errorHandler(err, req, res, next){
     res.status(500).json({message: 'there was an internal server error, please try again!'})
 }
 
-module.exports = { errorHandler }
+export default { errorHandler }
