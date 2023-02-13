@@ -10,7 +10,7 @@
 
 # Motivation
 
-The idea is to have something like a production-grade playground where I implement learnings/features that a production application should have in node.js. Other developers can also reference this for usage.
+The idea is to have a production-grade playground where I implement learnings/features that a production application should have in node.js. Other developers can also reference this for usage.
 
 # About The Project
 
