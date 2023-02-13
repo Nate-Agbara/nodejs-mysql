@@ -38,7 +38,7 @@ VOLUME /home/node/src/app/node_modules
 VOLUME /home/node/src/app/dist
 
 EXPOSE 3000
-# EXPOSE 9092
+# EXPOSE 3001
 # EXPOSE 3310
 
 CMD ["sh", "start.sh"]

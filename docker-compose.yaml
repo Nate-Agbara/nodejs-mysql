@@ -35,9 +35,3 @@ services:
       - '3000:3000'
     # depends_on:
     #   - 'mysql'
-    # environment:
-    #   - NODE_ENV
-    #   - DB_USER
-    #   - DB_PASSWORD
-    #   - DB_PORT
-    #   - DB_HOST

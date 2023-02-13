@@ -12,4 +12,4 @@ async function errorHandler(err, req, res, next){
     res.status(500).json({message: 'there was an internal server error, please try again!'})
 }
 
-export default { errorHandler }
+module.exports = errorHandler;

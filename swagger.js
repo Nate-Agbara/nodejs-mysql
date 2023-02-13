@@ -8,7 +8,7 @@ const options = {
         },
         servers: [
             {
-                url: 'http://localhost:3001',
+                url: 'http://localhost:3000',
                 description: 'development server'
             }
         ],
@@ -59,7 +59,7 @@ const options = {
             ApiKeyAuth: []
         }]
     },
-    apis: ['./index.js']
+    apis: ['./src/routes/userRoutes.js']
 }
 
 module.exports = options
