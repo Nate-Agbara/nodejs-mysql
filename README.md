@@ -1,12 +1,13 @@
 # Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [Motivation](#motivation)
-- [About The Project](#about-the-project)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Contributing](#contributing)
+-   [Table of Contents](#table-of-contents)
+-   [Motivation](#motivation)
+-   [About The Project](#about-the-project)
+-   [Development](#development)
+-   [Getting Started](#getting-started)
+    -   [Prerequisites](#prerequisites)
+    -   [Installation](#installation)
+-   [Contributing](#contributing)
 
 # Motivation
 
@@ -14,31 +15,64 @@ The idea is to have a production-grade playground where I implement learnings/fe
 
 # About The Project
 
-The project is a simple CRUD api written in node.js, using knex query builder on MySQL database. The project has a dockerfile for each of the service with the services defined in the docker-compose file. The project also has openapi swagger integration. A couple of shell scripts tied to the docker runs which are pretty straightforward to understand. It also make use of [winston logger](https://www.npmjs.com/package/winston) to make log agreggation easy for production scenarios. The project will provide a good foundational guide to developers looking to write production-grade applications in node.js. For now, the project is just a basic CRUD but the implementions may change as time goes.
+The project is a simple CRUD api written in node.js and express, using knex query builder on MySQL database.
+
+The project has a dockerfile for each of the service with the services defined in the docker-compose file.
+
+The project also has openapi swagger integration. A couple of shell scripts tied to the docker runs which are pretty straightforward to understand.
+
+It also make use of [winston logger](https://www.npmjs.com/package/winston) to make log agreggation easy for production scenarios.
+
+The project will provide a good foundational guide to developers looking to write production-grade applications in node.js.
+
+For now, the project is just a basic CRUD but the implementions may change as time goes.
+
+# Development
+
+This project uses Editorconfig to standardize editor configuration. Visit https://editorconfig.org for details.
+
+This project uses ESLint to detect suspicious code in JavaScript files. Visit https://eslint.org for details.
 
 # Getting Started
 
-- clone the project
-- If you are not already farmiliar with node.js, I'd suggest you follow this [step-by-step guide on setting up a node project](https://nathanagbara.hashnode.dev/nodejs-application-setup-procedure)
+-   If you are not already farmiliar with node.js, I'd suggest you follow this [step-by-step guide on setting up a node project](https://nathanagbara.hashnode.dev/nodejs-application-setup-procedure)
+
+```bash
+npm install
+npm start
+```
+
+The server runs on port 3000
+
+There are six routes
+
+-   http://localhost:3000/ - homepage
+-   https://localhost:3000/users [POST] - submit request to create a user
+-   https://localhost:3000/users [GET] - view all created users
+-   https://localhost:3000/users/:id [GET] - view a user by id
+-   https://localhost:3000/users/:id [PATCH] - updates a user details
+-   https://localhost:3000/users/:id [DELETE] - deletes a user by id
+
+The server persist using a MySQL database named `wallet` in the `.env` file.
 
 ## Prerequisites
 
 To run the application, you need to have the following applications on your machine:
 
-- A code editor of choice, e.g VSCode.
-- Docker
-- Any MySQL client, e.g MySQL workbench, heidiSQL, etc.
+-   A code editor of choice, e.g VSCode.
+-   Docker
+-   Any MySQL client, e.g MySQL workbench, heidiSQL, etc.
 
 ## Installation
 
-- Clone the project and open it in your code editor
-- Open a terminal in the directory of the project
-- Verify you have docker running, run the command `docker ps` to see if docker is running and the containers it has running
-- Run `docker-compose up --build -d`. This command will build the services listed in the compose file
-- Run `docker ps` to see the newly build services/container running. This should be mysql and wallet-app
-- connect to the mysql with the MySQL client to see the database created and the migrations executed
-- To watch the node.js app logs, open another terminal and run `docker logs -f <container-name>`
-- Open http://localhost:3000/api-docs/#/ in your browser to access the api documentation
+-   Clone the project and open it in your code editor
+-   Open a terminal in the directory of the project
+-   Verify you have docker running, run the command `docker ps` to see if docker is running and the containers it has running
+-   Run `docker-compose up --build -d`. This command will build the services listed in the compose file
+-   Run `docker ps` to see the newly build services/container running. This should be mysql and wallet-app
+-   connect to the mysql with the MySQL client to see the database created and the migrations executed
+-   To watch the node.js app logs, open another terminal and run `docker logs -f <container-name>`
+-   Open http://localhost:3000/api-docs/#/ in your browser to access the api documentation
 
 # Contributing
 
