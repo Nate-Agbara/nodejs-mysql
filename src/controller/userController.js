@@ -20,6 +20,7 @@ export const createUser = (req, res) => {
         email: req.body.email
     })
     .transacting(trx)
+    // eslint-disable-next-line no-unused-vars
     .then(function(users){
         knex.select().from('users').transacting(trx).then(function(users){
             res.send(users)
@@ -54,6 +55,7 @@ export const updateUserById = (req, res) => {
     })
     .where('id', req.params.id)
     .transacting(trx)
+    // eslint-disable-next-line no-unused-vars
     .then(function(users){
         knex.select().from('users').transacting(trx).then(function(users){
             res.send(users)
@@ -66,11 +68,12 @@ export const updateUserById = (req, res) => {
 
 export const deleteUserById = (req, res) => {
     knex.transaction(function(trx) {
-    
+
     knex('users')
     .del()
     .where('id', req.params.id)
     .transacting(trx)
+    // eslint-disable-next-line no-unused-vars
     .then(function(users){
         knex.select().from('users').transacting(trx).then(function(users){
             res.send(users)

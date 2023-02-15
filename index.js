@@ -12,7 +12,7 @@ const swaggerUI = require('swagger-ui-express');
 const options = require('./swagger');
 const errorHandler = require('./errorHandler');
 
-const app = express(); 
+const app = express();
 const PORT = process.env.SERVER_PORT || 3000;
 
 //logger setup
@@ -42,14 +42,14 @@ app.use(expressWinston.errorLogger({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
+// eslint-disable-next-line no-unused-vars
 app.get('/error', (req, res) => {
-    throw new Error('this is a custom error') 
+    throw new Error('this is a custom error')
 });
 
 routes(app);
 
-app.get('/', (req, res) => 
+app.get('/', (req, res) =>
     res.send(`Node and express server is running on port ${PORT}`) );
 
 app.use(errorHandler)
@@ -58,5 +58,5 @@ app.use(errorHandler)
 const specs = swaggerJSDoc(options)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs))
 
-app.listen(PORT, () => 
+app.listen(PORT, () =>
     console.log(`Your server is running on port ${PORT}`) );
